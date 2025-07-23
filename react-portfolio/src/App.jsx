@@ -8,6 +8,10 @@ import SortDropdown from "./sorter.jsx";
 import { Routes, Route } from "react-router-dom";
 import PodcastDetailsPage from "./PodcastDetailsPage";
 import "./index.css"
+import ShowsCarousel from "./showsCarousel.jsx";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 /*import "./PodcastDetailsPage.css";*/
 
 
@@ -101,6 +105,12 @@ return (
               <GenreFilter value={selectedGenre} onChange={setSelectedGenre} />
               <SortDropdown value={sortOrder} onChange={setSortOrder} />
             </div>
+               <ShowsCarousel
+                  podcasts={sortedPodcasts.map((podcast) => ({
+                    ...podcast,
+                    genres: getGenresByIds(podcast.genres),
+                  }))}
+               />
             <main id="podcast-grid" className="grid">
               {podcastCards}
             </main>
