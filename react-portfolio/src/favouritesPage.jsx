@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 export default function FavouritesPage() {
-  /*return (
+  const [favEpisodes, setFavEpisodes] = useState([]);
+
+  useEffect(function () {
+    const storedFavs = JSON.parse(localStorage.getItem("favourites")) || [];
+    setFavEpisodes(storedFavs);
+  }, []);
+
+  return (
     <>
       <nav>
         <Link to="/">Home</Link>
@@ -9,9 +17,9 @@ export default function FavouritesPage() {
 
       <div className="favourites-list">
         <div className="episodes">
-          <h2>Episodes in Season {selectedSeason}</h2>
+          <h2>Favourite Episodes</h2>
           <ul>
-            {seasonData.episodes.map((episode, index) => (
+            {favEpisodes.map((episode, index) => (
               <li key={index} className="episode">
                 <h3>{episode.title}</h3>
                 <p>{episode.description}</p>
@@ -26,7 +34,5 @@ export default function FavouritesPage() {
         </div>
       </div>
     </>
-  );*/
-
-  return <h1>This is the favourites page</h1>;
+  );
 }

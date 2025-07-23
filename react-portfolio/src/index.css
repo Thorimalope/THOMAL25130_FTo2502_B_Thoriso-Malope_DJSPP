@@ -116,6 +116,16 @@ body {
   list-style-type: none;
 }
 
+.episodes > ul > li > div {
+  display: flex;
+}
+
+.heart-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   #podcast-grid {
     grid-template-columns: repeat(2, 1fr);

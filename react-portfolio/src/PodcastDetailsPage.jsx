@@ -38,6 +38,17 @@ export default function PodcastDetailsPage() {
     selectedSeason &&
     podcast.seasons.find((season) => season.season === Number(selectedSeason));
 
+  function handleClick(episode) {
+    console.log("heart clicked");
+    saveToFavourites(episode);
+  }
+
+  function saveToFavourites(episode) {
+    let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
+    favourites.push(episode);
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }
+
   return (
     <div className="podcast-detail">
       <img src={podcast.image} alt={podcast.title} className="podcast-image" />
@@ -50,9 +61,7 @@ export default function PodcastDetailsPage() {
         <p className="podcast-genres">
           Genres: {genreNames.join(", ") || "None"}
         </p>
-        <p className="podcast-seasons">
-          Seasons: {podcast.seasons.length}
-        </p>
+        <p className="podcast-seasons">Seasons: {podcast.seasons.length}</p>
 
         {/* Season Selector */}
         {podcast.seasons.length > 0 && (
@@ -80,7 +89,14 @@ export default function PodcastDetailsPage() {
           <ul>
             {seasonData.episodes.map((episode, index) => (
               <li key={index} className="episode">
-                <h3>{episode.title}</h3>
+                <div>
+                  <h3>{episode.title}</h3>
+                  <img
+                    src="/heart-alt-svgrepo-com.svg"
+                    className="heart-icon"
+                    onClick={() => handleClick(episode)}
+                  />
+                </div>
                 <p>{episode.description}</p>
                 {episode.file && (
                   <audio controls src={episode.file}>
