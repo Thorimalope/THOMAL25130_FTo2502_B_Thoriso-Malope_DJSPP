@@ -91,6 +91,24 @@ body {
   border-radius: 5px;
 }
 
+.slick-slide > div {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.slick-prev {
+  left: 2% !important;
+  z-index: 1;
+}
+.slick-next {
+  right: 2% !important;
+  z-index: 1;
+}
+
+/* Episodes container*/
+
+.episodes {
+}
 
 @media (max-width: 768px) {
   #podcast-grid {
@@ -108,21 +126,6 @@ body {
     height: auto;
   }
 }
-
-.slick-slide > div {
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.slick-prev {
-  left: 2% !important;
-  z-index: 1;
-}
-.slick-next {
-  right: 2% !important;
-  z-index: 1;
-}
-
 
 @media (max-width: 480px) {
   #podcast-grid {
