@@ -1,15 +1,11 @@
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function FavouritesPage() {
-  return (
+  /*return (
     <>
-      <Router>
-        <nav>
-          <Routes>
-            <Route path="/" element={<App />} />
-          </Routes>
-        </nav>
-      </Router>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
 
       <div className="favourites-list">
         <div className="episodes">
@@ -30,5 +26,7 @@ export default function FavouritesPage() {
         </div>
       </div>
     </>
-  );
+  );*/
+
+  return <h1>This is the favourites page</h1>;
 }

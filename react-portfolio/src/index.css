@@ -107,7 +107,13 @@ body {
 
 /* Episodes container*/
 
-.episodes {
+.episodes > ul > li {
+  padding: 15px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  list-style-type: none;
 }
 
 @media (max-width: 768px) {
