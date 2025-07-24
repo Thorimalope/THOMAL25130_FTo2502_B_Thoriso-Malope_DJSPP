@@ -49,6 +49,18 @@ export default function PodcastDetailsPage() {
     localStorage.setItem("favourites", JSON.stringify(favourites));
   }
 
+  function handlePlay(episode) {
+    const episodeToSave = {
+      title: episode.title,
+      audioUrl: episode.file,
+      podcastTitle: podcast.title,
+      image: podcast.image,
+    };
+
+    localStorage.setItem("currentEpisode", JSON.stringify(episodeToSave));
+    window.dispatchEvent(new Event("episodeChanged"));
+  }
+
   return (
     <div className="podcast-detail">
       <img src={podcast.image} alt={podcast.title} className="podcast-image" />
@@ -99,9 +111,12 @@ export default function PodcastDetailsPage() {
                 </div>
                 <p>{episode.description}</p>
                 {episode.file && (
-                  <audio controls src={episode.file}>
-                    Your browser does not support the audio tag.
-                  </audio>
+                  <button
+                    onClick={() => handlePlay(episode)}
+                    className="play-button"
+                  >
+                    ▶ Play
+                  </button>
                 )}
               </li>
             ))}

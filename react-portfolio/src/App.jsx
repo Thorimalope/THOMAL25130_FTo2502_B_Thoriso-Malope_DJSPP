@@ -13,7 +13,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import FavouritesPage from "./favouritesPage.jsx";
-/*import "./PodcastDetailsPage.css";*/
+import GlobalAudioPlayer from "./GlobalAudioPlayer";
 
 export default function App() {
   const [podcasts, setPodcasts] = useState([]);
@@ -89,46 +89,49 @@ export default function App() {
   });
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          errorMessage ? (
-            <p>Error could not fetch data</p>
-          ) : (
-            <div>
-              <Header />
-              <div className="controls">
-                <SearchBar value={search} onChange={setSearch} />
-                <GenreFilter
-                  value={selectedGenre}
-                  onChange={setSelectedGenre}
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            errorMessage ? (
+              <p>Error could not fetch data</p>
+            ) : (
+              <div>
+                <Header />
+                <div className="controls">
+                  <SearchBar value={search} onChange={setSearch} />
+                  <GenreFilter
+                    value={selectedGenre}
+                    onChange={setSelectedGenre}
+                  />
+                  <SortDropdown value={sortOrder} onChange={setSortOrder} />
+                </div>
+                <ShowsCarousel
+                  podcasts={sortedPodcasts.map((podcast) => ({
+                    ...podcast,
+                    genres: getGenresByIds(podcast.genres),
+                  }))}
                 />
-                <SortDropdown value={sortOrder} onChange={setSortOrder} />
+                <main id="podcast-grid" className="grid">
+                  {podcastCards}
+                </main>
               </div>
-              <ShowsCarousel
-                podcasts={sortedPodcasts.map((podcast) => ({
-                  ...podcast,
-                  genres: getGenresByIds(podcast.genres),
-                }))}
-              />
-              <main id="podcast-grid" className="grid">
-                {podcastCards}
-              </main>
-            </div>
-          )
-        }
-      />
-      <Route
-        path="/podcast/:id"
-        element={
-          <PodcastDetailsPage
-            podcasts={podcasts}
-            getGenresByIds={getGenresByIds}
-          />
-        }
-      />
-      <Route path="/FavouritesPage" element={<FavouritesPage />} />
-    </Routes>
+            )
+          }
+        />
+        <Route
+          path="/podcast/:id"
+          element={
+            <PodcastDetailsPage
+              podcasts={podcasts}
+              getGenresByIds={getGenresByIds}
+            />
+          }
+        />
+        <Route path="/FavouritesPage" element={<FavouritesPage />} />
+      </Routes>
+      <GlobalAudioPlayer />
+    </>
   );
 }
