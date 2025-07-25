@@ -22,6 +22,24 @@ export default function App() {
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [sortOrder, setSortOrder] = useState("A-Z");
 
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    return saved ? saved === "dark" : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    if (isDarkMode) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
   useEffect(function () {
     fetch("https://podcast-api.netlify.app/")
       .then(function (response) {
@@ -98,7 +116,7 @@ export default function App() {
               <p>Error could not fetch data</p>
             ) : (
               <div>
-                <Header />
+                <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
                 <div className="controls">
                   <SearchBar value={search} onChange={setSearch} />
                   <GenreFilter
