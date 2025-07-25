@@ -5,7 +5,7 @@
 body {
   font-family: "Inter", sans-serif;
   margin: 0;
-  background: rgb(182, 178, 178);
+  background: rgb(224, 229, 231);
 }
 
 .app-header {
@@ -45,9 +45,14 @@ body {
   background: white;
   padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
   transition: transform 0.2s;
+  background: rgba(255, 255, 255, 0.43);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
 }
 
 .card:hover {
@@ -110,11 +115,11 @@ body {
 }
 
 .slick-prev {
-  left: 2% !important;
+  left: 1% !important;
   z-index: 1;
 }
 .slick-next {
-  right: 2% !important;
+  right: 1% !important;
   z-index: 1;
 }
 
@@ -124,19 +129,42 @@ body {
   padding: 15px;
   margin-bottom: 10px;
   margin-right: 20px;
-  border: 1px solid black;
   border-radius: 20px;
   list-style-type: none;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .episodes > ul > li > div {
   display: flex;
 }
 
+.episodes-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.episodes-image > img {
+  border-radius: 20px;
+}
+
 .heart-icon {
   width: 24px;
   height: 24px;
   cursor: pointer;
+  color: red;
+  margin-left: 450px;
+}
+
+.icon-and-title {
+  display: flex;
+  align-items: center;
 }
 
 .play-button {
@@ -147,6 +175,12 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.icon-and-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {

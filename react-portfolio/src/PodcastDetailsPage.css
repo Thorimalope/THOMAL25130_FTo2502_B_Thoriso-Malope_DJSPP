@@ -6,8 +6,14 @@
   margin: 0 auto;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fdfdfd;
+  background: rgb(224, 229, 231);
   color: #333;
+  /* background: rgba(255, 255, 255, 0.43); */
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
 }
 
 .podcast-image {

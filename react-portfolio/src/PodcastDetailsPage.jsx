@@ -39,14 +39,22 @@ export default function PodcastDetailsPage() {
     podcast.seasons.find((season) => season.season === Number(selectedSeason));
 
   function handleClick(episode) {
-    console.log("heart clicked");
-    saveToFavourites(episode);
+    const fullEpisode = {
+      title: episode.title,
+      description: episode.description,
+      file: episode.file,
+      podcastTitle: episode.podcastTitle,
+      image: podcast.image,
+    };
+    console.log("Episode image:", podcast.image);
+    saveToFavourites(fullEpisode);
   }
 
   function saveToFavourites(episode) {
     let favourites = JSON.parse(localStorage.getItem("favourites")) || [];
     favourites.push(episode);
     localStorage.setItem("favourites", JSON.stringify(favourites));
+    console.log("Saving to favourites:", episode);
   }
 
   function handlePlay(episode) {
@@ -101,7 +109,14 @@ export default function PodcastDetailsPage() {
           <ul>
             {seasonData.episodes.map((episode, index) => (
               <li key={index} className="episode">
-                <div>
+                <div className="episodes-image">
+                  <img
+                    src={podcast.image || "fallback.jpg"}
+                    alt={episode.podcastTitle || "Podcast"}
+                    className="episode-image"
+                  />
+                </div>
+                <div className="icon-and-title">
                   <h3>{episode.title}</h3>
                   <img
                     src="/heart-alt-svgrepo-com.svg"

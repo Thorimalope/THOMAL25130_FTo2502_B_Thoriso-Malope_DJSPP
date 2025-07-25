@@ -107,12 +107,14 @@ export default function App() {
                   />
                   <SortDropdown value={sortOrder} onChange={setSortOrder} />
                 </div>
-                <ShowsCarousel
-                  podcasts={sortedPodcasts.map((podcast) => ({
-                    ...podcast,
-                    genres: getGenresByIds(podcast.genres),
-                  }))}
-                />
+                {search.length == 0 && (
+                  <ShowsCarousel
+                    podcasts={sortedPodcasts.map((podcast) => ({
+                      ...podcast,
+                      genres: getGenresByIds(podcast.genres),
+                    }))}
+                  />
+                )}
                 <main id="podcast-grid" className="grid">
                   {podcastCards}
                 </main>
