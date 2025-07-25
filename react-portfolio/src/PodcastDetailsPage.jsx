@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { genres } from "./Data.js";
 import "./PodcastDetailsPage.css";
+import { Link } from "react-router-dom";
 
 export function getGenreNames(genreIds) {
   return genreIds.map((id) => {
@@ -45,8 +46,9 @@ export default function PodcastDetailsPage() {
       file: episode.file,
       podcastTitle: episode.podcastTitle,
       image: podcast.image,
+      dateAdded: new Date().toISOString(),
     };
-    console.log("Episode image:", podcast.image);
+    alert("Episode added to favourites");
     saveToFavourites(fullEpisode);
   }
 
@@ -71,6 +73,7 @@ export default function PodcastDetailsPage() {
 
   return (
     <div className="podcast-detail">
+      <Link to="/">Home</Link>
       <img src={podcast.image} alt={podcast.title} className="podcast-image" />
       <div className="podcast-info">
         <h1 className="podcast-title">{podcast.title}</h1>
