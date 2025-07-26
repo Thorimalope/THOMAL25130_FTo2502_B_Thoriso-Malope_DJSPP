@@ -24,3 +24,6 @@ This is a React-based web application that allows users to browse and play podca
 | **CSS**        | Custom styling                         |
 | **LocalStorage** | Client-side data persistence        |
 | **SVG Assets** | Icons for UI (heart, microphone, etc.) |
+
+## Link to the Live App
+https://thomal-25130-f-to2502-b-thoriso-mal.vercel.app/
